@@ -1,5 +1,4 @@
 
-
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +6,6 @@ public class Main {
         System.out.println("");
         String input = scanner.nextLine();
         try {
-            // Вызываем метод для вычисления результата
             String result = calc(input);
             System.out.println("Результат: " + result);
         } catch (Exception e) {
@@ -35,7 +33,7 @@ public class Main {
         a = Integer.parseInt(parts[0]);
         b = Integer.parseInt(parts[1]);
         if (a < 0 || a > 9 || b < 0 || b > 9) {
-            throw new IllegalArgumentException("Ошибка: Числа от 1 до 9");
+            throw new IllegalArgumentException("Ошибка: Числа от 1 до 10");
         }
         int result = 0;
         switch (operator) {
@@ -46,6 +44,24 @@ public class Main {
                 result = a - b;
                 break;
             case "*":
+                result = a * b;
+                break;
+            case "/":
+                if (b == 0) {
+                    throw new IllegalArgumentException("Делить на ноль нельзя");
+                }
+                result = a / b;
+                break;
+            default:
+                throw new IllegalArgumentException("Некорректная операция");
+        }
+
+
+        return String.valueOf(result);
+
+    }
+}
+
                 result = a * b;
                 break;
             case "/":
